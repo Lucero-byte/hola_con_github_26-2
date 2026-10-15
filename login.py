@@ -7,4 +7,8 @@ class Login(ttk.Frame):
 
         self.ven = ventana
         self.ven.geometry("350x450")
-        self.ven.titulo("Sistema Login")
+        self.ven.title("Sistema Login")
+        self.ven.config(bg = "#00ddff")
+        self.ven.resizable(False, False)
+        self.ven.wm_attributes("-alpha", 0.89)
+        self.ven.iconbitmap("iconos/icono.ico")
