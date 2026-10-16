@@ -1,5 +1,7 @@
-from tkinter import ttk
+from tkinter import ttk, messagebox
 import tkinter as tk
+
+from views.sistema_principal import *
 
 class Login(ttk.Frame):
     def __init__(self, ventana):
@@ -18,6 +20,20 @@ class Login(ttk.Frame):
 
         def Salir():
             self.ven.destroy()
+
+        def Ingresar():
+            try:
+                if(self.user.get() == "" or self.pas.get() == ""):
+                    messagebox.showerror("Aviso", "Debe ingresar usuario y contraseña")
+                else: 
+                    usuario = self.user.get()
+                    clave = self.pas.get()
+                    if(usuario == "Luce" and clave == "1234"):
+                        messagebox.showinfo("Aviso", "Bienvenido al sistema")
+                        self.ven.destroy()
+                        SistemaPrincipal()
+            except:
+                pass
 
         #ponemos un botón para cerrar la ventana
         self.btnSalir= tk.Button(self.ven, text="X", width=6, height=2, command=Salir)
@@ -55,6 +71,7 @@ class Login(ttk.Frame):
         self.txtPass.place(x=40, y=330)
         self.txtPass.config(bg="#FFFFFF")
 
-        self.btnIngresar = tk.Button(self.ven, text="INGRESAR", font=("Arial", 19, "bold"), width="17")
+        self.btnIngresar = tk.Button(self.ven, text="INGRESAR", font=("Arial", 19, "bold"),
+                                    command=Ingresar, width="17")
         self.btnIngresar.place(x=40, y=370)
         self.btnIngresar.config(bg="#3ad606")
